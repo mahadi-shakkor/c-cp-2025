@@ -4,7 +4,10 @@
 */
 
 #include <bits/stdc++.h>
-
+#include <iostream>
+#include <vector>
+#include <algorithm> // Required for std::swap
+#include <ctime>     // Required for clock()
 using namespace std;
 
 #define int            long long int
@@ -41,7 +44,25 @@ inline int power(int a, int b)
 	}
 	return x;
 }
+// Custom comparison function
+// Returns true if the first element is greater than the second
+bool compare(int a, int b) {
+    return a > b;
+}
 
+// Sorts the elements in increasing (ascending) order
+void bubble_sort(vector<int> &a, int n) {
+    // Outer loop for passes
+    for (int times = 1; times <= n - 1; times++) {
+        // Inner loop for repeated swapping
+        for (int j = 0; j <= n - times - 1; j++) {
+            // If the current element is greater than the next one, swap them
+            if (compare(a[j], a[j + 1])) {
+                swap(a[j], a[j + 1]);
+            }
+        }
+    }
+}
 template <typename Arg1>
 void __f (const char* name, Arg1&& arg1) { cout << name << " : " << arg1 << endl; }
 template <typename Arg1, typename... Args>
@@ -54,9 +75,25 @@ void __f (const char* names, Arg1&& arg1, Args&&... args)
 const int N = 200005;
 
 void solve() {
-	int n ,m ;
-	cin >>n>>m;
-	bug(n,m);
+	    // Get the size of the array from the user
+    int n;
+    cin >> n;
+    
+    // Create a vector of size 'n', initialized with zeros
+    vector<int> arr(n, 0);
+
+    // Initialize the vector with a reverse-sorted array (e.g., for n=5, arr = {5, 4, 3, 2, 1})
+    for (int i = 0; i < n; i++) {
+        arr[i] = n - i;
+    }
+
+    // Measure the execution time of the bubble sort algorithm
+    auto start_time = clock();
+    bubble_sort(arr, n);
+    auto end_time = clock();
+
+    // Output the time elapsed in clock ticks
+    cout << end_time - start_time << endl;
 	
 
 }
