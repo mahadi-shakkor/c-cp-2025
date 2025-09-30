@@ -89,7 +89,7 @@ void solve() {
 
     // Measure the execution time of the bubble sort algorithm
     auto start_time = clock();
-    bubble_sort(arr, n);
+    sort(arr.begin(),arr.end());
     auto end_time = clock();
 
     // Output the time elapsed in clock ticks
