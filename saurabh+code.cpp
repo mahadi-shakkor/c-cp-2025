@@ -56,7 +56,18 @@ const int N = 200005;
 void solve() {
 	int n;
 	cin >>n;
-	cout <<n;
+	int a[n];
+	for (int i = 0; i < n; ++i)
+	{
+		cin >>a[i];
+	}
+	reverse( a,a+n);
+	for (int i = 0; i < n; ++i)
+	{
+		cout<<a[i];
+	}
+	cout<<endl;
+
 }
 
 int32_t main()
@@ -71,7 +82,7 @@ int32_t main()
 	clock_t z = clock();
 
 	int t = 1;
-	// cin >> t;
+	cin >> t;
 	while (t--) solve();
 
 	cerr << "Run Time : " << ((double)(clock() - z) / CLOCKS_PER_SEC);
